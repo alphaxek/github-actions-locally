@@ -1,0 +1,206 @@
+.menu { grid-area: menu; }
+.main { grid-area: main; }
+
+body{
+    background-color: #0E1117;
+    font-family: verdana;
+    overflow: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+      'menu main main main main';
+    gap: 10px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    margin: 20px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main{
+    width: 100vw;
+    height: 100vh;
+    margin: 10px;
+}
+
+.menu {
+    display: inline-grid;
+    grid-template-rows: auto auto;
+    overflow: scroll;
+    width: 20vw;
+    height: 90vh; 
+}
+.container > .menu {
+    border-right: #8C939E 1px solid;
+}
+
+.txtOne{
+    font-size: 50px;
+    background-color: #0E1117;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.workflow > .label, .summary > .label{
+    padding: 15px;
+    margin: 5px;
+    background-color: #1B1F24;
+    border-radius: 6px;
+    width: 34vh;
+    height: 1.5vw;
+}
+
+.workflow > .active, .summary > .active{
+    width: 6px;
+    height: 3vw;
+    background-color: #69A4FD;
+    border-radius: 6px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.job > .status, .step > .status{
+    margin-top: 15px;
+}
+
+.step > .duration{
+    text-align-last: right;
+    margin-right: 7em;
+    font-size: 12px; 
+    color: #8C939E;
+}
+
+
+.workflow {
+    display: inline-grid;
+    grid-template-columns: 10px auto;
+}
+
+.summary {
+    display: inline-grid;
+    grid-template-columns: 10px auto;
+}
+
+.job {
+    display: inline-grid;
+    grid-template-columns: 30px auto;
+    border-radius: 6px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.job:hover {
+    background-color: #1B1F24 ;
+}
+
+.step {
+    display: inline-grid;
+    grid-template-columns: 30px auto auto;
+    grid-template-rows: auto;
+    width: inherit;
+    padding-left: 10px;
+    border-radius: 6px;
+}
+
+.step > .detail{
+    width: inherit;
+    text-align-last: left;
+    margin-right: 7em;
+    font-size: 12px; 
+    color: #8C939E
+}
+
+.step:hover {
+    background-color: #1B1F24 ;
+}
+
+.detail{
+    display: none;
+    margin-left: 20px;
+    margin-right: 10px;;
+}
+
+.hr{
+    width: 95%;
+    height: 1px;
+    background-color: #8C939E;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.symbol{
+    width: 20px;
+    height: 20px;
+}
+
+button{
+    background-color: #1B1F24;
+    color: white;
+    padding: 14px 38px 14px 30px;
+    border-radius: 6px;
+    border: none;
+}
+
+button:hover{
+    background-color: #272d33;
+}
+
+.info{
+    border: #8C939E 1px solid;
+    border-radius: 6px;
+    margin: 20px 50px 20px 0px;
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    padding: 35px;
+    height: 10vh;
+    width: 70vw;
+}
+
+.job-step{
+    border-radius: 6px;
+    margin: 20px 50px 20px 0px;
+    background-color: black;
+    padding: 20px;
+    overflow: scroll;
+    height: 38vh;
+    width: 71.5vw;
+}
+
+.info > .info-status, .info > p, .info > .info-duration {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.info > .info-status > .txtThree, .info > .info-duration > .txtThree, .job-step > .job-status > .txtThree{
+  font-size: 10px;  
+  color: #8C939E;
+}
+
+#step3:checked + #step3 > .detail { visibility: visible;}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: none; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1B1F24; 
+    border-radius: 60px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8C939E; 
+  }

@@ -1,0 +1,226 @@
+2022-12-02 20:33:38,548 12008 [DEBUG] - XmlConfiguration is now operational
+2022-12-02 20:33:38,604 12008 [DEBUG] - Adding new type 'WebPiService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:38,605 12008 [DEBUG] - Adding new type 'WindowsFeatureService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:38,606 12008 [DEBUG] - Adding new type 'CygwinService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:38,608 12008 [DEBUG] - Adding new type 'PythonService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:38,609 12008 [DEBUG] - Adding new type 'RubyGemsService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:38,611 12008 [DEBUG] - Adding new type 'SystemStateValidation' for type 'IValidation' from assembly 'choco'
+2022-12-02 20:33:38,768 12008 [DEBUG] - Registering new command 'template' in assembly 'choco'
+2022-12-02 20:33:38,770 12008 [DEBUG] - Registering new command 'upgrade' in assembly 'choco'
+2022-12-02 20:33:38,771 12008 [DEBUG] - Registering new command 'export' in assembly 'choco'
+2022-12-02 20:33:38,772 12008 [DEBUG] - Registering new command 'list' in assembly 'choco'
+2022-12-02 20:33:38,773 12008 [DEBUG] - Registering new command 'info' in assembly 'choco'
+2022-12-02 20:33:38,774 12008 [DEBUG] - Registering new command 'help' in assembly 'choco'
+2022-12-02 20:33:38,775 12008 [DEBUG] - Registering new command 'config' in assembly 'choco'
+2022-12-02 20:33:38,777 12008 [DEBUG] - Registering new command 'features' in assembly 'choco'
+2022-12-02 20:33:38,779 12008 [DEBUG] - Registering new command 'new' in assembly 'choco'
+2022-12-02 20:33:38,780 12008 [DEBUG] - Registering new command 'outdated' in assembly 'choco'
+2022-12-02 20:33:38,781 12008 [DEBUG] - Registering new command 'pack' in assembly 'choco'
+2022-12-02 20:33:38,781 12008 [DEBUG] - Registering new command 'pin' in assembly 'choco'
+2022-12-02 20:33:38,782 12008 [DEBUG] - Registering new command 'push' in assembly 'choco'
+2022-12-02 20:33:38,783 12008 [DEBUG] - Registering new command 'apikey' in assembly 'choco'
+2022-12-02 20:33:38,784 12008 [DEBUG] - Registering new command 'sources' in assembly 'choco'
+2022-12-02 20:33:38,784 12008 [DEBUG] - Registering new command 'uninstall' in assembly 'choco'
+2022-12-02 20:33:38,785 12008 [DEBUG] - Registering new command 'unpackself' in assembly 'choco'
+2022-12-02 20:33:38,786 12008 [DEBUG] - Registering new command 'install' in assembly 'choco'
+2022-12-02 20:33:38,798 12008 [DEBUG] - Attempting to create directory "C:\ProgramData\chocolatey\config".
+2022-12-02 20:33:38,950 12008 [INFO ] - ============================================================
+2022-12-02 20:33:39,232 12008 [DEBUG] - Attempting to replace "C:\ProgramData\chocolatey\config\chocolatey.config"
+ with "C:\ProgramData\chocolatey\config\chocolatey.config.12008.update".
+ Backup placed at "C:\ProgramData\chocolatey\config\chocolatey.config.backup".
+2022-12-02 20:33:39,238 12008 [DEBUG] - Attempting to copy "C:\ProgramData\chocolatey\config\chocolatey.config.12008.update"
+ to "C:\ProgramData\chocolatey\config\chocolatey.config".
+2022-12-02 20:33:39,241 12008 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\config\chocolatey.config.12008.update".
+2022-12-02 20:33:39,246 12008 [INFO ] - 1.2.0
+2022-12-02 20:33:39,250 12008 [DEBUG] - Exiting with 0
+2022-12-02 20:33:39,811 5024 [DEBUG] - XmlConfiguration is now operational
+2022-12-02 20:33:39,867 5024 [DEBUG] - Adding new type 'WebPiService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:39,868 5024 [DEBUG] - Adding new type 'WindowsFeatureService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:39,869 5024 [DEBUG] - Adding new type 'CygwinService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:39,870 5024 [DEBUG] - Adding new type 'PythonService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:39,871 5024 [DEBUG] - Adding new type 'RubyGemsService' for type 'ISourceRunner' from assembly 'choco'
+2022-12-02 20:33:39,871 5024 [DEBUG] - Adding new type 'SystemStateValidation' for type 'IValidation' from assembly 'choco'
+2022-12-02 20:33:40,021 5024 [DEBUG] - Registering new command 'template' in assembly 'choco'
+2022-12-02 20:33:40,022 5024 [DEBUG] - Registering new command 'upgrade' in assembly 'choco'
+2022-12-02 20:33:40,023 5024 [DEBUG] - Registering new command 'export' in assembly 'choco'
+2022-12-02 20:33:40,024 5024 [DEBUG] - Registering new command 'list' in assembly 'choco'
+2022-12-02 20:33:40,026 5024 [DEBUG] - Registering new command 'info' in assembly 'choco'
+2022-12-02 20:33:40,027 5024 [DEBUG] - Registering new command 'help' in assembly 'choco'
+2022-12-02 20:33:40,028 5024 [DEBUG] - Registering new command 'config' in assembly 'choco'
+2022-12-02 20:33:40,029 5024 [DEBUG] - Registering new command 'features' in assembly 'choco'
+2022-12-02 20:33:40,030 5024 [DEBUG] - Registering new command 'new' in assembly 'choco'
+2022-12-02 20:33:40,030 5024 [DEBUG] - Registering new command 'outdated' in assembly 'choco'
+2022-12-02 20:33:40,031 5024 [DEBUG] - Registering new command 'pack' in assembly 'choco'
+2022-12-02 20:33:40,032 5024 [DEBUG] - Registering new command 'pin' in assembly 'choco'
+2022-12-02 20:33:40,033 5024 [DEBUG] - Registering new command 'push' in assembly 'choco'
+2022-12-02 20:33:40,033 5024 [DEBUG] - Registering new command 'apikey' in assembly 'choco'
+2022-12-02 20:33:40,034 5024 [DEBUG] - Registering new command 'sources' in assembly 'choco'
+2022-12-02 20:33:40,034 5024 [DEBUG] - Registering new command 'uninstall' in assembly 'choco'
+2022-12-02 20:33:40,036 5024 [DEBUG] - Registering new command 'unpackself' in assembly 'choco'
+2022-12-02 20:33:40,037 5024 [DEBUG] - Registering new command 'install' in assembly 'choco'
+2022-12-02 20:33:40,154 5024 [INFO ] - ============================================================
+2022-12-02 20:33:40,300 5024 [INFO ] - Chocolatey v1.2.0
+2022-12-02 20:33:40,306 5024 [DEBUG] - Chocolatey is running on Windows v 10.0.22621.0
+2022-12-02 20:33:40,309 5024 [DEBUG] - Attempting to delete file "C:/ProgramData/chocolatey/choco.exe.old".
+2022-12-02 20:33:40,310 5024 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\choco.exe.old".
+2022-12-02 20:33:40,319 5024 [DEBUG] - Command line: "C:\ProgramData\chocolatey\choco.exe" install act-cli
+2022-12-02 20:33:40,320 5024 [DEBUG] - Received arguments: install act-cli
+2022-12-02 20:33:40,374 5024 [DEBUG] - RemovePendingPackagesTask is now ready and waiting for PreRunMessage.
+2022-12-02 20:33:40,383 5024 [DEBUG] - Sending message 'PreRunMessage' out if there are subscribers...
+2022-12-02 20:33:40,391 5024 [DEBUG] - [Pending] Removing all pending packages that should not be considered installed...
+2022-12-02 20:33:40,444 5024 [DEBUG] - Performing validation checks.
+2022-12-02 20:33:40,450 5024 [DEBUG] - Global Configuration Validation Checks:
+2022-12-02 20:33:40,453 5024 [DEBUG] -  - Package Exit Code / Exit On Reboot = Checked
+2022-12-02 20:33:40,457 5024 [DEBUG] - System State Validation Checks:
+2022-12-02 20:33:40,460 5024 [DEBUG] -  Reboot Requirement Checks:
+2022-12-02 20:33:40,463 5024 [DEBUG] -  - Pending Computer Rename = Checked
+2022-12-02 20:33:40,466 5024 [DEBUG] -  - Pending Component Based Servicing = Checked
+2022-12-02 20:33:40,468 5024 [DEBUG] -  - Pending Windows Auto Update = Checked
+2022-12-02 20:33:40,474 5024 [DEBUG] -  - Pending File Rename Operations = Ignored
+2022-12-02 20:33:40,477 5024 [DEBUG] -  - Pending Windows Package Installer = Checked
+2022-12-02 20:33:40,478 5024 [DEBUG] -  - Pending Windows Package Installer SysWow64 = Checked
+2022-12-02 20:33:40,494 5024 [INFO ] - 2 validations performed. 2 success(es), 0 warning(s), and 0 error(s).
+2022-12-02 20:33:40,512 5024 [DEBUG] - The source 'https://community.chocolatey.org/api/v2/' evaluated to a 'normal' source type
+2022-12-02 20:33:40,514 5024 [DEBUG] - 
+NOTE: Hiding sensitive configuration data! Please double and triple
+ check to be sure no sensitive data is shown, especially if copying
+ output to a gist for review.
+2022-12-02 20:33:40,526 5024 [DEBUG] - Configuration: CommandName='install'|
+CacheLocation='C:\Users\alpha\AppData\Local\Temp\chocolatey'|
+ContainsLegacyPackageInstalls='True'|
+CommandExecutionTimeoutSeconds='2700'|WebRequestTimeoutSeconds='30'|
+Sources='https://community.chocolatey.org/api/v2/'|SourceType='normal'|
+Debug='False'|Verbose='False'|Trace='False'|Force='False'|Noop='False'|
+HelpRequested='False'|UnsuccessfulParsing='False'|RegularOutput='True'|
+QuietOutput='False'|PromptForConfirmation='True'|
+DisableCompatibilityChecks='False'|AcceptLicense='False'|
+AllowUnofficialBuild='False'|Input='act-cli'|AllVersions='False'|
+SkipPackageInstallProvider='False'|SkipHookScripts='False'|
+PackageNames='act-cli'|Prerelease='False'|ForceX86='False'|
+OverrideArguments='False'|NotSilent='False'|
+ApplyPackageParametersToDependencies='False'|
+ApplyInstallArgumentsToDependencies='False'|IgnoreDependencies='False'|
+AllowMultipleVersions='False'|AllowDowngrade='False'|
+ForceDependencies='False'|PinPackage='False'|
+Information.PlatformType='Windows'|
+Information.PlatformVersion='10.0.22621.0'|
+Information.PlatformName='Windows 10'|
+Information.ChocolateyVersion='1.2.0.0'|
+Information.ChocolateyProductVersion='1.2.0'|
+Information.FullName='choco, Version=1.2.0.0, Culture=neutral, PublicKeyToken=79d02ea9cad655eb'|
+
+Information.Is64BitOperatingSystem='True'|
+Information.Is64BitProcess='True'|Information.IsInteractive='True'|
+Information.UserName='alpha'|Information.UserDomainName='ALFAF'|
+Information.IsUserAdministrator='True'|
+Information.IsUserSystemAccount='False'|
+Information.IsUserRemoteDesktop='False'|
+Information.IsUserRemote='True'|
+Information.IsProcessElevated='True'|
+Information.IsLicensedVersion='False'|Information.LicenseType='Foss'|
+Information.CurrentDirectory='D:\GAL\github-actions-locally\__tests__'|
+Features.AutoUninstaller='True'|Features.ChecksumFiles='True'|
+Features.AllowEmptyChecksums='False'|
+Features.AllowEmptyChecksumsSecure='True'|
+Features.FailOnAutoUninstaller='False'|
+Features.FailOnStandardError='False'|Features.UsePowerShellHost='True'|
+Features.LogEnvironmentValues='False'|Features.LogWithoutColor='False'|
+Features.VirusCheck='False'|
+Features.FailOnInvalidOrMissingLicense='False'|
+Features.IgnoreInvalidOptionsSwitches='True'|
+Features.UsePackageExitCodes='True'|
+Features.UseEnhancedExitCodes='False'|
+Features.UseFipsCompliantChecksums='False'|
+Features.ShowNonElevatedWarnings='True'|
+Features.ShowDownloadProgress='True'|
+Features.StopOnFirstPackageFailure='False'|
+Features.UseRememberedArgumentsForUpgrades='False'|
+Features.IgnoreUnfoundPackagesOnUpgradeOutdated='False'|
+Features.SkipPackageUpgradesWhenNotInstalled='False'|
+Features.RemovePackageInformationOnUninstall='False'|
+Features.ExitOnRebootDetected='False'|
+Features.LogValidationResultsOnWarnings='True'|
+Features.UsePackageRepositoryOptimizations='True'|
+ListCommand.LocalOnly='False'|ListCommand.IdOnly='False'|
+ListCommand.IncludeRegistryPrograms='False'|ListCommand.PageSize='25'|
+ListCommand.Exact='False'|ListCommand.ByIdOnly='False'|
+ListCommand.ByTagOnly='False'|ListCommand.IdStartsWith='False'|
+ListCommand.OrderByPopularity='False'|ListCommand.ApprovedOnly='False'|
+ListCommand.DownloadCacheAvailable='False'|
+ListCommand.NotBroken='False'|
+ListCommand.IncludeVersionOverrides='False'|
+UpgradeCommand.FailOnUnfound='False'|
+UpgradeCommand.FailOnNotInstalled='False'|
+UpgradeCommand.NotifyOnlyAvailableUpgrades='False'|
+UpgradeCommand.ExcludePrerelease='False'|
+NewCommand.AutomaticPackage='False'|
+NewCommand.UseOriginalTemplate='False'|SourceCommand.Command='unknown'|
+SourceCommand.Priority='0'|SourceCommand.BypassProxy='False'|
+SourceCommand.AllowSelfService='False'|
+SourceCommand.VisibleToAdminsOnly='False'|
+FeatureCommand.Command='unknown'|ConfigCommand.Command='unknown'|
+ApiKeyCommand.Remove='False'|PinCommand.Command='unknown'|
+OutdatedCommand.IgnorePinned='False'|
+ExportCommand.IncludeVersionNumbers='False'|Proxy.BypassOnLocal='True'|
+TemplateCommand.Command='unknown'|
+2022-12-02 20:33:40,527 5024 [DEBUG] - _ Chocolatey:ChocolateyInstallCommand - Normal Run Mode _
+2022-12-02 20:33:40,532 5024 [INFO ] - Installing the following packages:
+2022-12-02 20:33:40,534 5024 [INFO ] - act-cli
+2022-12-02 20:33:40,535 5024 [INFO ] - By installing, you accept licenses for the packages.
+2022-12-02 20:33:40,633 5024 [DEBUG] - Using 'https://community.chocolatey.org/api/v2/'.
+2022-12-02 20:33:41,102 5024 [DEBUG] - - Supports prereleases? 'True'.
+2022-12-02 20:33:41,104 5024 [DEBUG] - - Is ServiceBased? 'True'.
+2022-12-02 20:33:43,639 5024 [DEBUG] - Package 'act-cli' found on source 'https://community.chocolatey.org/api/v2/'
+2022-12-02 20:33:50,437 5024 [INFO ] - [NuGet] Installing 'act-cli 0.2.34'.
+2022-12-02 20:33:50,448 5024 [DEBUG] - [NuGet] Added file 'VERIFICATION.txt' to folder 'act-cli\tools'.
+2022-12-02 20:33:50,450 5024 [DEBUG] - [NuGet] Added file 'LICENSE.txt' to folder 'act-cli\tools'.
+2022-12-02 20:33:50,483 5024 [DEBUG] - [NuGet] Added file 'act.exe' to folder 'act-cli\tools'.
+2022-12-02 20:33:50,494 5024 [DEBUG] - [NuGet] Added file 'act-cli.nupkg' to folder 'act-cli'.
+2022-12-02 20:33:50,857 5024 [DEBUG] - [NuGet] Added file 'act-cli.nuspec' to folder 'act-cli'.
+2022-12-02 20:33:50,858 5024 [INFO ] - [NuGet] Successfully installed 'act-cli 0.2.34'.
+2022-12-02 20:33:50,861 5024 [INFO ] - 
+act-cli v0.2.34 [Approved]
+2022-12-02 20:33:50,871 5024 [INFO ] - act-cli package files install completed. Performing other installation steps.
+2022-12-02 20:33:51,004 5024 [DEBUG] - Capturing package files in 'C:\ProgramData\chocolatey\lib\act-cli'
+2022-12-02 20:33:51,025 5024 [DEBUG] -  Found 'C:\ProgramData\chocolatey\lib\act-cli\act-cli.nupkg'
+  with checksum '7C26E4D4C6CC7F5061F0127E42F84106'
+2022-12-02 20:33:51,026 5024 [DEBUG] -  Found 'C:\ProgramData\chocolatey\lib\act-cli\act-cli.nuspec'
+  with checksum 'F6FC209260384865799769B6527A3345'
+2022-12-02 20:33:51,083 5024 [DEBUG] -  Found 'C:\ProgramData\chocolatey\lib\act-cli\tools\act.exe'
+  with checksum '3D6B2E266AFF0BE717EDC1EECE9110FB'
+2022-12-02 20:33:51,085 5024 [DEBUG] -  Found 'C:\ProgramData\chocolatey\lib\act-cli\tools\LICENSE.txt'
+  with checksum 'A66E5405574D0B2070C567A5D81DDFD2'
+2022-12-02 20:33:51,086 5024 [DEBUG] -  Found 'C:\ProgramData\chocolatey\lib\act-cli\tools\VERIFICATION.txt'
+  with checksum '3A65FBB86DD8D29A04EE4857B445621E'
+2022-12-02 20:33:51,103 5024 [DEBUG] - Calling command ['"C:\ProgramData\chocolatey\tools\shimgen.exe" --path="..\\lib\act-cli\tools\act.exe" --output="C:\ProgramData\chocolatey\bin\act.exe"  --iconpath="C:\ProgramData\chocolatey\lib\act-cli\tools\act.exe"']
+2022-12-02 20:33:51,714 5024 [DEBUG] -  [ShimGen] [WARN ] Could not extract icon from associated program. Using default. Error:
+2022-12-02 20:33:51,714 5024 [DEBUG] -  [ShimGen]   Selected Icon is invalid
+2022-12-02 20:33:51,987 5024 [DEBUG] -  [ShimGen] Microsoft (R) Visual C# Compiler version 4.8.9032.0
+2022-12-02 20:33:51,988 5024 [DEBUG] -  [ShimGen] for C# 5
+2022-12-02 20:33:51,989 5024 [DEBUG] -  [ShimGen] Copyright (C) Microsoft Corporation. All rights reserved.
+2022-12-02 20:33:51,990 5024 [DEBUG] -  [ShimGen] This compiler is provided as part of the Microsoft (R) .NET Framework, but only supports language versions up to C# 5, which is no longer the latest version. For compilers that support newer versions of the C# programming language, see http://go.microsoft.com/fwlink/?LinkID=533240
+2022-12-02 20:33:51,992 5024 [DEBUG] -  [ShimGen] ShimGen has successfully created 'C:\ProgramData\chocolatey\bin\act.exe'
+2022-12-02 20:33:52,002 5024 [DEBUG] - Command ['"C:\ProgramData\chocolatey\tools\shimgen.exe" --path="..\\lib\act-cli\tools\act.exe" --output="C:\ProgramData\chocolatey\bin\act.exe"  --iconpath="C:\ProgramData\chocolatey\lib\act-cli\tools\act.exe"'] exited with '0'
+2022-12-02 20:33:52,005 5024 [INFO ] -  ShimGen has successfully created a shim for act.exe
+2022-12-02 20:33:52,006 5024 [DEBUG] -   Created: C:\ProgramData\chocolatey\bin\act.exe
+  Targeting: C:\ProgramData\chocolatey\lib\act-cli\tools\act.exe
+  IsGui:False
+
+2022-12-02 20:33:52,026 5024 [DEBUG] - Attempting to create directory "C:\ProgramData\chocolatey\.chocolatey".
+2022-12-02 20:33:52,035 5024 [DEBUG] - Adding 'Hidden' attribute(s) to 'C:\ProgramData\chocolatey\.chocolatey'.
+2022-12-02 20:33:52,043 5024 [DEBUG] - Attempting to create directory "C:\ProgramData\chocolatey\.chocolatey\act-cli.0.2.34".
+2022-12-02 20:33:52,054 5024 [DEBUG] - There was no original file at 'C:\ProgramData\chocolatey\.chocolatey\act-cli.0.2.34\.files'
+2022-12-02 20:33:52,056 5024 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\.chocolatey\act-cli.0.2.34\.extra".
+2022-12-02 20:33:52,058 5024 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\.chocolatey\act-cli.0.2.34\.version".
+2022-12-02 20:33:52,060 5024 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\.chocolatey\act-cli.0.2.34\.sxs".
+2022-12-02 20:33:52,061 5024 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\.chocolatey\act-cli.0.2.34\.pin".
+2022-12-02 20:33:52,063 5024 [DEBUG] - Sending message 'HandlePackageResultCompletedMessage' out if there are subscribers...
+2022-12-02 20:33:52,065 5024 [DEBUG] - Attempting to delete file "C:\ProgramData\chocolatey\lib\act-cli\.chocolateyPending".
+2022-12-02 20:33:52,068 5024 [INFO ] -  The install of act-cli was successful.
+2022-12-02 20:33:52,069 5024 [INFO ] -   Software installed to 'C:\ProgramData\chocolatey\lib\act-cli'
+2022-12-02 20:33:52,071 5024 [DEBUG] - Attempting to delete file "C:\Users\alpha\AppData\Local\NuGet\Cache\act-cli.0.2.34.nupkg".
+2022-12-02 20:33:52,085 5024 [WARN ] - 
+Chocolatey installed 1/1 packages. 
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+2022-12-02 20:33:52,087 5024 [DEBUG] - Sending message 'PostRunMessage' out if there are subscribers...
+2022-12-02 20:33:52,104 5024 [DEBUG] - Exiting with 0

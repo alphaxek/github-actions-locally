@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fileSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <files>
+    <file path="C:\ProgramData\chocolatey\lib\act-cli\act-cli.nupkg" checksum="7C26E4D4C6CC7F5061F0127E42F84106" />
+    <file path="C:\ProgramData\chocolatey\lib\act-cli\act-cli.nuspec" checksum="F6FC209260384865799769B6527A3345" />
+    <file path="C:\ProgramData\chocolatey\lib\act-cli\tools\act.exe" checksum="3D6B2E266AFF0BE717EDC1EECE9110FB" />
+    <file path="C:\ProgramData\chocolatey\lib\act-cli\tools\LICENSE.txt" checksum="A66E5405574D0B2070C567A5D81DDFD2" />
+    <file path="C:\ProgramData\chocolatey\lib\act-cli\tools\VERIFICATION.txt" checksum="3A65FBB86DD8D29A04EE4857B445621E" />
+  </files>
+</fileSnapshot>

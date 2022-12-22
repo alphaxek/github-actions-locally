@@ -1,0 +1,19 @@
+2022-12-02 20:33:38,950 12008 [INFO ] - ============================================================
+2022-12-02 20:33:39,246 12008 [INFO ] - 1.2.0
+2022-12-02 20:33:40,154 5024 [INFO ] - ============================================================
+2022-12-02 20:33:40,300 5024 [INFO ] - Chocolatey v1.2.0
+2022-12-02 20:33:40,494 5024 [INFO ] - 2 validations performed. 2 success(es), 0 warning(s), and 0 error(s).
+2022-12-02 20:33:40,532 5024 [INFO ] - Installing the following packages:
+2022-12-02 20:33:40,534 5024 [INFO ] - act-cli
+2022-12-02 20:33:40,535 5024 [INFO ] - By installing, you accept licenses for the packages.
+2022-12-02 20:33:50,437 5024 [INFO ] - [NuGet] Installing 'act-cli 0.2.34'.
+2022-12-02 20:33:50,858 5024 [INFO ] - [NuGet] Successfully installed 'act-cli 0.2.34'.
+2022-12-02 20:33:50,861 5024 [INFO ] - 
+act-cli v0.2.34 [Approved]
+2022-12-02 20:33:50,871 5024 [INFO ] - act-cli package files install completed. Performing other installation steps.
+2022-12-02 20:33:52,005 5024 [INFO ] -  ShimGen has successfully created a shim for act.exe
+2022-12-02 20:33:52,068 5024 [INFO ] -  The install of act-cli was successful.
+2022-12-02 20:33:52,069 5024 [INFO ] -   Software installed to 'C:\ProgramData\chocolatey\lib\act-cli'
+2022-12-02 20:33:52,085 5024 [WARN ] - 
+Chocolatey installed 1/1 packages. 
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).

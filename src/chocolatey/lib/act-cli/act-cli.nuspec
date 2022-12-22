@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>act-cli</id>
+    <version>0.2.34</version>
+    <title>act (GitHub Actions CLI)</title>
+    <authors>nektos</authors>
+    <owners>nektos</owners>
+    <licenseUrl>https://raw.githubusercontent.com/nektos/act/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/nektos/act</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/wiki/nektos/act/img/logo-150.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Run your GitHub Actions locally 🚀</description>
+    <summary>Run your GitHub Actions locally 🚀</summary>
+    <copyright>Nektos</copyright>
+    <tags>act github-actions actions golang ci devops</tags>
+    <projectSourceUrl>https://github.com/nektos/act</projectSourceUrl>
+    <packageSourceUrl>https://github.com/nektos/act</packageSourceUrl>
+    <docsUrl>https://raw.githubusercontent.com/nektos/act/master/README.md</docsUrl>
+    <bugTrackerUrl>https://github.com/nektos/act/issues</bugTrackerUrl>
+  </metadata>
+</package>
