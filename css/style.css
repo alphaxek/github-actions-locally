@@ -51,7 +51,7 @@ body{
     margin: 5px;
     background-color: #1B1F24;
     border-radius: 6px;
-    width: 34vh;
+    width: 28vh;
     height: 1.5vw;
 }
 
@@ -62,23 +62,34 @@ body{
     border-radius: 6px;
     margin-top: 5px;
     margin-bottom: 5px;
+    visibility: hidden;
 }
 
 .job > .status, .step > .status{
     margin-top: 15px;
 }
 
-.step > .duration{
+.step > .run{
     text-align-last: right;
     margin-right: 7em;
     font-size: 12px; 
     color: #8C939E;
 }
 
+.step > .run:hover{
+    cursor: pointer;
+    text-decoration: overline;
+}
+
 
 .workflow {
     display: inline-grid;
     grid-template-columns: 10px auto;
+}
+
+.workflow:hover .active{
+    visibility: visible;
+    background-color: #8C939E;
 }
 
 .summary {
@@ -95,7 +106,7 @@ body{
 }
 
 .job:hover {
-    background-color: #1B1F24 ;
+    background-color: #1B1F24;
 }
 
 .step {
@@ -112,7 +123,7 @@ body{
     text-align-last: left;
     margin-right: 7em;
     font-size: 12px; 
-    color: #8C939E
+    color: #8C939E;
 }
 
 .step:hover {

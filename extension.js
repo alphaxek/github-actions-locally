@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 const path = require('path');
 const custom_act = require("./src/helpers/index");
+const galApi = require("./src/api/index");
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -38,6 +39,10 @@ function activate(context) {
 			path.join(context.extensionPath,"img", "waiting.png")
 		  ));
 
+		  const rocket= panel.webview.asWebviewUri(vscode.Uri.file(
+			path.join(context.extensionPath,"img", "rocket.png")
+		  ));
+
 		  const imgLoading = panel.webview.asWebviewUri(vscode.Uri.file(
 			path.join(context.extensionPath,"img", "loading.gif")
 		  ));
@@ -65,9 +70,9 @@ function activate(context) {
 		// }
 		// a();
 
-		// console.log(custom_act.getAllActions(vscode.workspace.workspaceFolders[0].uri['_fsPath']));
+		//console.log(custom_act.getAllActions(vscode.workspace.workspaceFolders[0].uri));
 		const workflows = custom_act.getAllActions(vscode.workspace.workspaceFolders[0].uri['_fsPath']);
-		
+
 		var listOfWorkflows = [];
 
 		for(const workflow in workflows['response']){
@@ -75,34 +80,60 @@ function activate(context) {
 		}
 
 		var listOfWorkflowsuSet = new Set(listOfWorkflows);
-		var htmlWorkflow ="";
 
+		var listOfWorkflowFilenames = [];
+
+		for(const workflow in workflows['response']){
+			listOfWorkflowFilenames[workflow] =  workflows['response'][workflow]['workflow_file'];
+		}
+
+		var listOfWorkflowFilenamesuSet = new Set(listOfWorkflowFilenames);
+
+		var htmlWorkflow ="";
+		
 		for(const workflow in [...listOfWorkflowsuSet]){
 			htmlWorkflow += `
-			<div class="workflow">
-				<div class="active" style="visibility: visible"></div>
+			<div class="workflow" id="${[...listOfWorkflowFilenamesuSet][workflow]}" onClick="showJobs('${[...listOfWorkflowFilenamesuSet][workflow]}job','${[...listOfWorkflowFilenamesuSet][workflow]}')">
+				<div class="active"></div>
 				<p class="label">${[...listOfWorkflowsuSet][workflow]}</p>
 			</div>`;
 		}
 
 		var htmlJob ="";
-
+		// console.log(workflows);
+		// for(const workflow in workflows['response']){
+		// 	htmlJob += `
+		// 	<div class="job" id="${workflows['response'][workflow]['workflow_file']}">
+		// 		<img src="${imgWaiting}" class="status symbol"/>
+	  	// 		<p class="label" onclick="runJob('${workflows['response'][workflow]['job_id']}')">${workflows['response'][workflow]['job_name']}</p>
+  		// 	</div>`;
+		// }
+		var jobNum = 0;
 		for(const workflow in workflows['response']){
 			htmlJob += `
-			<div class="job">
+			<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="display: none">
 				<img src="${imgWaiting}" class="status symbol"/>
-	  			<p class="label">${workflows['response'][workflow]['job_name']}</p>
-  			</div>`;
+				<p class="label">${workflows['response'][workflow]['job_name']}</p>
+				<p class="run" id="runJob">Run</p>
+				<div class="detail" id="response${jobNum++}">
+				<p><i>Ready to run</i></p>
+				</div>
+			</div>`;
 		}
 
+		
+
+		//start API
+		galApi.startAPI();
+
 		// And set its HTML content
-		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, script, style, htmlWorkflow, htmlJob);
+		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, vscode.workspace.workspaceFolders[0].uri['_fsPath'], "Build");
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, script, style, htmlWorkflow, htmlJob) {
+function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, path, job) {
 	return `<html lang="en">
 	<head>
 	  <meta charset="UTF-8">
@@ -123,48 +154,60 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 				  <div class="active"></div>
 				  <p class="label"><img src="${imgSummary}" class="symbol"/>&nbsp;&nbsp;Summary</p>
 			  </div>
-			  <h3 class="txtTwo">Jobs</h3>
+			  <h3 class="txtTwo">Run Events</h3>
 			  <div class="hr"></div>
-			  ${htmlJob}
+			<!--$ { htmlJob } -->
+			<div class="job" id="pull">
+				<img src="${rocket}" class="status symbol"/>
+	  			<p class="label" onclick="runJob(test')">Pull</p>
+  		 	</div>
+			<div class="job" id="push">
+				<img src="${rocket}" class="status symbol"/>
+	  			<p class="label" onclick="runJob(test')">Push</p>
+  		 	</div>
+			<div class="job" id="merge">
+				<img src="${rocket}" class="status symbol"/>
+				<p class="label" onclick="runJob(test')">Merge</p>
+			</div>
 		  </div>
 		  <div class="main">
-			  <button>Run Job</button>
+			  <button id="runJob">Run All Jobs</button>
 			  <br>
 			  <div class="info">
-				  <h5>Triggered 3 mins ago</h5>
+				  <h4>Docker Not Running</h4>
 				  <div class="info-status">
 					  <p class="txtThree">Status</p>
-					  <p>Success</p>
+					  <p>-</p>
 				  </div>
 				  <div class="info-duration">
 					  <p class="txtThree">Duration</p>
-					  <p>48s</p>
+					  <p>-</p>
 				  </div>
 			  </div>
 			  <div class="job-step">
 				  <div class="job-status">
-					  <p>Status</p>
-					  <p class="txtThree">Succeeded 3 mins ago</p>
+					  <p>Jobs</p>
+					  <p class="txtThree">All</p>
 				  </div>  
 				  <div class="hr"></div>
-				  <div class="step" onclick="showDetails('step1')"   >
+				  <!--
+				  <div class="step" onclick="showDetails('response')"   >
 					  <img src="${imgCorrect}" class="status symbol"/>
-					  <p class="label">Step 1</p>
+					  <p class="label">Response</p>
 					  <p class="duration">48s</p>
-					  <div class="detail" id="step1" id="detail">
-						  <p>1 details</p>
-						  <p>2 details</p>
-						  <p>3 details</p>
-						  <p>4 details</p>
-						  <p>5 details</p>
+					  <div class="detail" id="response">
+					  	<p><i>Waiting</i></p>
 					  </div>
 				  </div>
+				  -->
+				  ${htmlJob}
+				  <!--
 				  <div class="step" onclick="showDetails('step2')">
 					  <img src="${imgLoading}" class="status symbol"/>
 					  <p class="label">Step 2</p>
 					  <p class="duration">236s</p>
-					  <div class="detail" id="step2">
-						  <p><i>Waiting</i></p>
+					  <div class="detail">
+						  <p id="response"><i>Waiting</i></p>
 					  </div>
 				  </div>
 				  <div class="step" onclick="showDetails('step3')">
@@ -172,7 +215,7 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 					  <p class="label">Step 3</p>
 					  <p class="duration"></p>
 					  <div class="detail" id="step3">
-						  <p><i>Waiting</i></p>
+						  <p id="response2"><i>Waiting</i></p>
 					  </div>
 				  </div>
 				  <div class="step" onclick="showDetails('step4')">
@@ -180,13 +223,32 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 					  <p class="label">Step 4</p>
 					  <p class="duration"></p>
 					  <div class="detail" id="step4">
-						  <p><i>Waiting</i></p>
+						  <p id="response3"><i>Waiting</i></p>
 					  </div>
 				  </div>
+				  -->
 			  </div>
 		  </div>
 	  </div>
 	  <script src="${script}"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	  <script>
+		$(document).ready(function () {
+			$("#runJob").click(function (e) {
+				$.ajax({
+					type: "GET",
+					url: "http://localhost:7867/runworkflow?job=${job}&path=${encodeURI(path)}",
+					dataType: "json",
+					success: function (result, status, xhr) {
+						$("#detail").html(result);
+					},
+					error: function (xhr, status, error) {
+
+					}
+				});
+			});
+		});
+		</script>
 	</body>
   </html>`;
 }
