@@ -87,7 +87,7 @@ body{
     grid-template-columns: 10px auto;
 }
 
-.workflow:hover .active{
+.workflow:hover .active {
     visibility: visible;
     background-color: #8C939E;
 }

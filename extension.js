@@ -187,7 +187,7 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 			  <div class="job-step">
 				  <div class="job-status">
 					  <p>Jobs</p>
-					  <p class="txtThree">All</p>
+					  <p class="txtThree" id="job-file-name">-</p>
 				  </div>  
 				  <div class="hr"></div>
 				  <!--

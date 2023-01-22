@@ -11,6 +11,7 @@ function showJobs(id, thisItem) {
   var steps = document.querySelectorAll(".step");
   var workflow = document.querySelectorAll(".workflow");
 
+  document.getElementById("job-file-name").innerHTML = thisItem;
 
   for(var i = 0; i < workflow.length; i++){
     if (workflow[i].id  === thisItem) {
@@ -28,5 +29,4 @@ function showJobs(id, thisItem) {
       steps[i].style.display = "none";
     }
   }
-
 }
