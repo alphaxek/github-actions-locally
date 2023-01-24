@@ -24,9 +24,9 @@ function showJobs(id, thisItem) {
 
   for(var i = 0; i < steps.length; i++){
     if (steps[i].id  === id) {
-      steps[i].style.display = "inline";
+      steps[i].style.visibility = "visible";
     } else {
-      steps[i].style.display = "none";
+      steps[i].style.visibility = "hidden";
     }
   }
 }

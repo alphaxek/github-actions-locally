@@ -43,6 +43,10 @@ function activate(context) {
 			path.join(context.extensionPath,"img", "rocket.png")
 		  ));
 
+		  const emptyFolder = panel.webview.asWebviewUri(vscode.Uri.file(
+			path.join(context.extensionPath,"img", "empty-folder.png")
+		  ));
+
 		  const imgLoading = panel.webview.asWebviewUri(vscode.Uri.file(
 			path.join(context.extensionPath,"img", "loading.gif")
 		  ));
@@ -90,13 +94,25 @@ function activate(context) {
 		var listOfWorkflowFilenamesuSet = new Set(listOfWorkflowFilenames);
 
 		var htmlWorkflow ="";
-		
-		for(const workflow in [...listOfWorkflowsuSet]){
-			htmlWorkflow += `
-			<div class="workflow" id="${[...listOfWorkflowFilenamesuSet][workflow]}" onClick="showJobs('${[...listOfWorkflowFilenamesuSet][workflow]}job','${[...listOfWorkflowFilenamesuSet][workflow]}')">
-				<div class="active"></div>
-				<p class="label">${[...listOfWorkflowsuSet][workflow]}</p>
-			</div>`;
+		var BodyTagonLoadJob = "";
+
+		if(Object.entries(workflows).length === 0){
+			htmlWorkflow = `
+				<div class="workflow">
+					<p class="label"><img src="${emptyFolder}" class="symbol"/>&nbsp;&nbsp;No Workflows Found</p>
+				</div>`
+
+			BodyTagonLoadJob = `<body>`;
+		}else{
+			for(const workflow in [...listOfWorkflowsuSet]){
+				htmlWorkflow += `
+				<div class="workflow" id="${[...listOfWorkflowFilenamesuSet][workflow]}" onClick="showJobs('${[...listOfWorkflowFilenamesuSet][workflow]}job','${[...listOfWorkflowFilenamesuSet][workflow]}')">
+					<div class="active"></div>
+					<p class="label">${[...listOfWorkflowsuSet][workflow]}</p>
+				</div>`;
+
+				BodyTagonLoadJob = `<body onload="showJobs('${[...listOfWorkflowFilenamesuSet][0]}job','${[...listOfWorkflowFilenamesuSet][0]}')">`;
+			}
 		}
 
 		var htmlJob ="";
@@ -109,31 +125,38 @@ function activate(context) {
   		// 	</div>`;
 		// }
 		var jobNum = 0;
-		for(const workflow in workflows['response']){
-			htmlJob += `
-			<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="display: none">
-				<img src="${imgWaiting}" class="status symbol"/>
-				<p class="label">${workflows['response'][workflow]['job_name']}</p>
-				<p class="run" id="runJob">Run</p>
-				<div class="detail" id="response${jobNum++}">
-				<p><i>Ready to run</i></p>
-				</div>
-			</div>`;
-		}
 
-		
+		if(Object.entries(workflows['response']).length === 0){
+			htmlJob = `
+				<div class="step">
+					<img src="${emptyFolder}" class="status symbol"/>
+					<p class="label">No Jobs Found</p>
+				</div>`;
+		}else{
+			for(const workflow in workflows['response']){
+				htmlJob += `
+				<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="visibility: hidden">
+					<img src="${imgWaiting}" class="status symbol"/>
+					<p class="label">${workflows['response'][workflow]['job_name']}</p>
+					<p class="run" id="runJob">Run</p>
+					<div class="detail" id="response${jobNum++}">
+					<p><i>Ready to run</i></p>
+					</div>
+				</div>`;
+			}
+		}
 
 		//start API
 		galApi.startAPI();
 
 		// And set its HTML content
-		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, vscode.workspace.workspaceFolders[0].uri['_fsPath'], "Build");
+		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, vscode.workspace.workspaceFolders[0].uri['_fsPath'], "Build", BodyTagonLoadJob);
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, path, job) {
+function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, path, job, BodyTagonLoadJob) {
 	return `<html lang="en">
 	<head>
 	  <meta charset="UTF-8">
@@ -142,32 +165,170 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 	  <title>GAL</title>
 	  <link rel="stylesheet" href="${style}">
 	</head>
-	<body>
+	${BodyTagonLoadJob}
 	  <div class="container">
 		  <div class="menu">
-			  <h1 class="txtOne">GAL</h1>
-			  <h3 class="txtTwo">All workflows</h3>
-			  <div class="hr"></div>
-			  ${htmlWorkflow}
-			  <div class="hr"></div>
-			  <div class="summary">
-				  <div class="active"></div>
-				  <p class="label"><img src="${imgSummary}" class="symbol"/>&nbsp;&nbsp;Summary</p>
-			  </div>
-			  <h3 class="txtTwo">Run Events</h3>
-			  <div class="hr"></div>
+			<h1 class="txtOne">GAL</h1>
+			<h3 class="txtTwo">All workflows</h3>
+			<div class="hr"></div>
+			<div class="workflow-section">
+			${htmlWorkflow}
+			</div>
+			<div class="hr"></div>
+			<!--
+			<div class="summary">
+				<div class="active"></div>
+				<p class="label"><img src="${imgSummary}" class="symbol"/>&nbsp;&nbsp;Summary</p>
+			</div>
+			-->
+			<h3 class="txtTwo">Run Events</h3>
+			<div class="hr"></div>
 			<!--$ { htmlJob } -->
-			<div class="job" id="pull">
-				<img src="${rocket}" class="status symbol"/>
-	  			<p class="label" onclick="runJob(test')">Pull</p>
-  		 	</div>
-			<div class="job" id="push">
-				<img src="${rocket}" class="status symbol"/>
-	  			<p class="label" onclick="runJob(test')">Push</p>
-  		 	</div>
-			<div class="job" id="merge">
-				<img src="${rocket}" class="status symbol"/>
-				<p class="label" onclick="runJob(test')">Merge</p>
+			<div class="events-section">
+				<div class="job" id="pull">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">branch_protection_rule</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">check_run</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">check_suite</p>
+				</div>
+				<div class="job" id="pull">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">create</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">delete</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">deployment</p>
+				</div>
+				<div class="job" id="pull">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">deployment_status</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">discussion</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">discussion_comment</p>
+				</div>
+				<div class="job" id="pull">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">fork</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">gollum</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">issue_comment</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">issues</p>
+				</div>
+				<div class="job" id="pull">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">label</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">merge_group</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">milestone</p>
+				</div>
+				<div class="job" id="pull">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">page_build</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">project</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">project_card</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">project_column</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">public</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">pull_request</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">pull_request_comment</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">pull_request_review</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">pull_request_review_comment</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">pull_request_target</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">push</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">registry_package</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">release</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">repository_dispatch</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">schedule</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">status</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">watch</p>
+				</div>
+				<div class="job" id="push">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">workflow_call</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">workflow_dispatch</p>
+				</div>
+				<div class="job" id="merge">
+					<img src="${rocket}" class="status symbol"/>
+					<p class="label" onclick="runJob('test')">workflow_run</p>
+				</div>
 			</div>
 		  </div>
 		  <div class="main">

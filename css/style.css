@@ -29,11 +29,9 @@ body{
 .menu {
     display: inline-grid;
     grid-template-rows: auto auto;
-    overflow: scroll;
+    /*overflow: scroll;*/
     width: 20vw;
-    height: 90vh; 
-}
-.container > .menu {
+    height: 96vh; 
     border-right: #8C939E 1px solid;
 }
 
@@ -85,12 +83,19 @@ body{
 .workflow {
     display: inline-grid;
     grid-template-columns: 10px auto;
+    height: auto;
 }
 
 .workflow:hover .active {
     visibility: visible;
     background-color: #8C939E;
 }
+
+.workflow-section, .events-section{
+    height: 40vh;
+    overflow: scroll;
+}
+
 
 .summary {
     display: inline-grid;
