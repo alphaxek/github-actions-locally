@@ -15,7 +15,7 @@ function showJobs(id, thisItem) {
 
   for(var i = 0; i < workflow.length; i++){
     if (workflow[i].id  === thisItem) {
-      workflow[i].querySelector(".active").style.backgroundColor = "#69A4FD";
+      workflow[i].querySelector(".active").style.backgroundColor = "#5c2da8";
       workflow[i].querySelector(".active").style.visibility = "visible";
     } else {
       workflow[i].querySelector(".active").style.visibility = "hidden";
@@ -24,9 +24,9 @@ function showJobs(id, thisItem) {
 
   for(var i = 0; i < steps.length; i++){
     if (steps[i].id  === id) {
-      steps[i].style.visibility = "visible";
+      steps[i].style.display = "grid";
     } else {
-      steps[i].style.visibility = "hidden";
+      steps[i].style.display = "none";
     }
   }
 }

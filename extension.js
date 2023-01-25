@@ -135,7 +135,7 @@ function activate(context) {
 		}else{
 			for(const workflow in workflows['response']){
 				htmlJob += `
-				<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="visibility: hidden">
+				<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="display: none">
 					<img src="${imgWaiting}" class="status symbol"/>
 					<p class="label">${workflows['response'][workflow]['job_name']}</p>
 					<p class="run" id="runJob">Run</p>

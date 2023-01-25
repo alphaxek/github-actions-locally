@@ -2,7 +2,10 @@
 .main { grid-area: main; }
 
 body{
-    background-color: #0E1117;
+    background-color: #1e1e1e;
+    background-image: url("./../img/bg.png");
+    background-repeat: repeat;
+    background-size: cover;
     font-family: verdana;
     overflow: hidden;
 }
@@ -37,7 +40,7 @@ body{
 
 .txtOne{
     font-size: 50px;
-    background-color: #0E1117;
+    background-color: #1e1e1e;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -47,7 +50,7 @@ body{
 .workflow > .label, .summary > .label{
     padding: 15px;
     margin: 5px;
-    background-color: #1B1F24;
+    background-color: #101211;
     border-radius: 6px;
     width: 28vh;
     height: 1.5vw;
@@ -56,7 +59,7 @@ body{
 .workflow > .active, .summary > .active{
     width: 6px;
     height: 3vw;
-    background-color: #69A4FD;
+    background-color: #5c2da8;
     border-radius: 6px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -111,7 +114,7 @@ body{
 }
 
 .job:hover {
-    background-color: #5c2da8;;
+    background-color: #5c2da8;
 }
 
 .step {
@@ -155,7 +158,7 @@ body{
 }
 
 button{
-    background-color: #1B1F24;
+    background-color: #101211;
     color: white;
     padding: 14px 38px 14px 30px;
     border-radius: 6px;
@@ -180,7 +183,7 @@ button:hover{
 .job-step{
     border-radius: 6px;
     margin: 20px 50px 20px 0px;
-    background-color: black;
+    background-color: #101211;
     padding: 20px;
     overflow: scroll;
     height: 38vh;
