@@ -47,6 +47,14 @@ function activate(context) {
 			path.join(context.extensionPath,"img", "empty-folder.png")
 		  ));
 
+		  const github = panel.webview.asWebviewUri(vscode.Uri.file(
+			path.join(context.extensionPath,"img", "github.png")
+		  ));
+
+		  const docker = panel.webview.asWebviewUri(vscode.Uri.file(
+			path.join(context.extensionPath,"img", "docker.png")
+		  ));
+
 		  const imgLoading = panel.webview.asWebviewUri(vscode.Uri.file(
 			path.join(context.extensionPath,"img", "loading.gif")
 		  ));
@@ -102,7 +110,7 @@ function activate(context) {
 					<p class="label"><img src="${emptyFolder}" class="symbol"/>&nbsp;&nbsp;No Workflows Found</p>
 				</div>`
 
-			BodyTagonLoadJob = `<body>`;
+			BodyTagonLoadJob = `<body onload="checkApi();">`;
 		}else{
 			for(const workflow in [...listOfWorkflowsuSet]){
 				htmlWorkflow += `
@@ -111,7 +119,7 @@ function activate(context) {
 					<p class="label">${[...listOfWorkflowsuSet][workflow]}</p>
 				</div>`;
 
-				BodyTagonLoadJob = `<body onload="showJobs('${[...listOfWorkflowFilenamesuSet][0]}job','${[...listOfWorkflowFilenamesuSet][0]}')">`;
+				BodyTagonLoadJob = `<body onload="showJobs('${[...listOfWorkflowFilenamesuSet][0]}job','${[...listOfWorkflowFilenamesuSet][0]}');checkApi();">`;
 			}
 		}
 
@@ -150,13 +158,13 @@ function activate(context) {
 		galApi.startAPI();
 
 		// And set its HTML content
-		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, vscode.workspace.workspaceFolders[0].uri['_fsPath'], "Build", BodyTagonLoadJob);
+		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, vscode.workspace.workspaceFolders[0].uri['_fsPath'], "Build", BodyTagonLoadJob, docker, github);
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, path, job, BodyTagonLoadJob) {
+function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, path, job, BodyTagonLoadJob, docker, github) {
 	return `<html lang="en">
 	<head>
 	  <meta charset="UTF-8">
@@ -335,7 +343,14 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 			  <button id="runJob">Run All Jobs</button>
 			  <br>
 			  <div class="info">
-				  <h4>Docker Not Running</h4>
+			   	  <div class="info-status-apps" style="display: flex; align-items: center;">
+					 <img src="${docker}" class="symbol-big"/>
+					 <h4>Not Running</h4>
+				  </div>
+				  <div class="info-status-apps" style="display: flex; align-items: center;">
+					 <img src="${github}" class="symbol-big"/>
+					 <h4 id="githubStatus">Not Running</h4>
+				  </div>
 				  <div class="info-status">
 					  <p class="txtThree">Status</p>
 					  <p>-</p>

@@ -157,6 +157,11 @@ body{
     height: 20px;
 }
 
+.symbol-big{
+    width: 35px;
+    height: 35px;
+}
+
 button{
     background-color: #101211;
     color: white;
@@ -174,7 +179,7 @@ button:hover{
     border-radius: 6px;
     margin: 20px 50px 20px 0px;
     display: inline-grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     padding: 35px;
     height: 10vh;
     width: 70vw;
@@ -188,6 +193,7 @@ button:hover{
     overflow: scroll;
     height: 38vh;
     width: 71.5vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .info > .info-status, .info > p, .info > .info-duration {
@@ -198,6 +204,16 @@ button:hover{
 .info > .info-status > .txtThree, .info > .info-duration > .txtThree, .job-step > .job-status > .txtThree{
   font-size: 10px;  
   color: #8C939E;
+}
+
+.info > .info-status-apps{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.info > .info-status-apps > img{
+    margin-right: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #step3:checked + #step3 > .detail { visibility: visible;}

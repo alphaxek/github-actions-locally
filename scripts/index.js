@@ -30,3 +30,22 @@ function showJobs(id, thisItem) {
     }
   }
 }
+
+function checkApi(){
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:7867/heartbeat",
+    dataType: "json",
+    statusCode: {
+      200: function(data) {
+        $("#githubStatus").html("Running");
+      }
+    },
+    success: function (result, status, xhr) {
+      $("#githubStatus").html("Running");
+    },
+    error: function (xhr, status, error) {
+      $("#githubStatus").html("Not Running");
+    }
+  });
+}
