@@ -148,9 +148,9 @@ function activate(context) {
 			for(const workflow in workflows['response']){
 				htmlJob += `
 				<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="display: none">
-					<img src="${imgWaiting}" class="status symbol"/>
+					<img src="${imgWaiting}" id="img${jobNum}" class="status symbol"/>
 					<p class="label">${workflows['response'][workflow]['job_name']}</p>
-					<p class="run" id="runJob">Run</p>
+					<p class="run" id="runJob" onclick="runJobInWorkflow(\'${workflows['response'][workflow]['job_id']}\', \'${workflows['response'][workflow]['workflow_file']}\', \'${encodeURI(vscode.workspace.workspaceFolders[0].uri['_fsPath'])}\',\'${jobNum}\',\'${imgLoading}\',\'${imgSuccess}\',\'${imgRemove}\');">Run</p>
 					<div class="detail" id="response${jobNum++}">
 					<p><i>Ready to run</i></p>
 					</div>
@@ -162,13 +162,41 @@ function activate(context) {
 		galApi.startAPI();
 
 		// And set its HTML content
-		panel.webview.html = getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, vscode.workspace.workspaceFolders[0].uri['_fsPath'], "Build", BodyTagonLoadJob, docker, github, refresh);
+		panel.webview.html = getWebviewContent(	imgSummary, 
+												imgCorrect, 
+												imgSuccess, 
+												imgRemove, 
+												imgWaiting, 
+												imgLoading, 
+												rocket, 
+												script, 
+												style,
+												htmlWorkflow, 
+												htmlJob, 
+												BodyTagonLoadJob,
+												docker, 
+												github, 
+												refresh);
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWaiting, imgLoading, rocket, script, style, htmlWorkflow, htmlJob, path, job, BodyTagonLoadJob, docker, github, refresh) {
+function getWebviewContent(	imgSummary, 
+							imgCorrect, 
+							imgSuccess, 
+							imgRemove, 
+							imgWaiting, 
+							imgLoading, 
+							rocket, 
+							script, 
+							style, 
+							htmlWorkflow, 
+							htmlJob, 
+							BodyTagonLoadJob, 
+							docker, 
+							github, 
+							refresh) {
 	return `<html lang="en">
 	<head>
 	  <meta charset="UTF-8">
@@ -415,24 +443,9 @@ function getWebviewContent(imgSummary, imgCorrect, imgSuccess, imgRemove, imgWai
 	  <script src="${script}"></script>
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	  <script>
-
 		$(document).ready(function () {
 			$.ajaxSetup({
 				cache: false,
-			});
-
-			$("#runJob").click(function (e) {
-				$.ajax({
-					type: "GET",
-					url: "http://localhost:7867/runworkflow?job=${job}&path=${encodeURI(path)}",
-					dataType: "json",
-					success: function (result, status, xhr) {
-						$("#detail").html(result);
-					},
-					error: function (xhr, status, error) {
-
-					}
-				});
 			});
 		});
 		</script>

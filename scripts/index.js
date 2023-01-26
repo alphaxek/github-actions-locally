@@ -78,3 +78,19 @@ function checkDocker(){
     }
   });
 }
+
+function runJobInWorkflow(job, workflow, path, jobNum, imgLoading, imgSuccess, imgRemove){
+    $(`#img${jobNum}`).attr("src", `${imgLoading}`);
+    $.ajax({
+      type: "POST",
+      url: `http://localhost:7867/runjobinworkflow?job=${job}&workflow=${encodeURI(workflow)}&path=${path+'\\.github\\workflows\\'}`,
+      dataType: "json",
+      success: function (result, status, xhr) {
+        $(`#response${jobNum}`).html(result);
+        $(`#img${jobNum}`).attr("src", `${imgSuccess}`);
+      },
+      error: function (xhr, status, error) {
+        $(`#img${jobNum}`).attr("src", `${imgRemove}`);
+      }
+    });
+}

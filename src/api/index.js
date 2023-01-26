@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors');
-const { runJob } = require("./../helpers/index");
+const { runJobInWorkflow } = require("./../helpers/index");
 const { heartbeat, isDocker } = require("./helpers/index");
 const app = express()
 
@@ -8,8 +8,12 @@ app.use(cors({
     origin: '*'
 }));
 
-app.get('/runworkflow', function (req, res) {
-    console.log(runJob(req.query.job, req.query.path));
+app.post('/runjobinworkflow', function (req, res) {
+    console.log(req.query.job);
+    console.log(req.query.workflow);
+    console.log(req.query.path);
+    var response = runJobInWorkflow(req.query.job, req.query.workflow, req.query.path)
+    res.json({ response: response });
 })
 
 app.get('/heartbeat', function (req, res) {
