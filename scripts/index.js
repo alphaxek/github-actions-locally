@@ -32,6 +32,8 @@ function showJobs(id, thisItem) {
 }
 
 function checkApi(){
+  $("#gitRefresh").addClass("rotate");
+
   $.ajax({
     type: "GET",
     url: "http://localhost:7867/heartbeat",
@@ -39,13 +41,40 @@ function checkApi(){
     statusCode: {
       200: function(data) {
         $("#githubStatus").html("Running");
+        $("#gitRefresh").removeClass("rotate");
       }
     },
     success: function (result, status, xhr) {
       $("#githubStatus").html("Running");
+      $("#gitRefresh").removeClass("rotate");
     },
     error: function (xhr, status, error) {
       $("#githubStatus").html("Not Running");
+      $("#gitRefresh").removeClass("rotate");
+    }
+  });
+}
+
+function checkDocker(){
+  $("#dockerRefresh").addClass("rotate");
+
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:7867/isdocker",
+    dataType: "json",
+    statusCode: {
+      200: function(data) {
+        $("#dockerStatus").html("Running");
+        $("#dockerRefresh").removeClass("rotate");
+      }
+    },
+    success: function (result, status, xhr) {
+      $("#dockerStatus").html("Running");
+      $("#dockerRefresh").removeClass("rotate");
+    },
+    error: function (xhr, status, error) {
+      $("#dockerStatus").html("Not Running");
+      $("#dockerRefresh").removeClass("rotate");
     }
   });
 }

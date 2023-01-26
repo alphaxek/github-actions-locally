@@ -1,6 +1,10 @@
 .menu { grid-area: menu; }
 .main { grid-area: main; }
 
+@keyframes rotate{
+    to{ transform: rotate(360deg); }
+}
+
 body{
     background-color: #1e1e1e;
     background-image: url("./../img/bg.png");
@@ -162,6 +166,17 @@ body{
     height: 35px;
 }
 
+.symbol-small{
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+}
+
+.symbol-small:hover{
+    cursor: pointer;
+    filter: grayscale(40%);
+}
+
 button{
     background-color: #101211;
     color: white;
@@ -173,6 +188,11 @@ button{
 button:hover{
     background-color: #272d33;
 }
+
+.rotate{
+    animation: rotate 1s linear infinite; 
+}
+
 
 .info{
     border: #8C939E 1px solid;
@@ -211,7 +231,7 @@ button:hover{
     padding-right: 30px;
 }
 
-.info > .info-status-apps > img{
+.info > .info-status-apps > .symbol-big{
     margin-right: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

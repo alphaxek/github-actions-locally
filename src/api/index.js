@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors');
-const { runJob } = require("../helpers/actFunctions");
+const { runJob } = require("./../helpers/index");
+const { heartbeat, isDocker } = require("./helpers/index");
 const app = express()
 
 app.use(cors({
@@ -12,7 +13,17 @@ app.get('/runworkflow', function (req, res) {
 })
 
 app.get('/heartbeat', function (req, res) {
-    res.sendStatus(200);
+    if(heartbeat()){
+        res.sendStatus(200);
+    }
+})
+
+app.get('/isdocker', function (req, res) {
+    if(isDocker()){
+        res.sendStatus(200);
+    }else{
+        res.sendStatus(410);
+    }
 })
 
 
