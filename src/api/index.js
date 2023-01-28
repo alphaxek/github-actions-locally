@@ -9,11 +9,13 @@ app.use(cors({
 }));
 
 app.post('/runjobinworkflow', function (req, res) {
-    console.log(req.query.job);
-    console.log(req.query.workflow);
-    console.log(req.query.path);
-    var response = runJobInWorkflow(req.query.job, req.query.workflow, req.query.path)
-    res.json({ response: response });
+    try {
+        var response = runJobInWorkflow(req.query.job, req.query.workflow, req.query.path);
+        res.status(200).json({ response: response });
+    }
+    catch (e) {
+        res.status(410).json({ response: e });
+    }
 })
 
 app.get('/heartbeat', function (req, res) {

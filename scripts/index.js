@@ -80,17 +80,38 @@ function checkDocker(){
 }
 
 function runJobInWorkflow(job, workflow, path, jobNum, imgLoading, imgSuccess, imgRemove){
+    let start = Date.now();
     $(`#img${jobNum}`).attr("src", `${imgLoading}`);
+    $(`#response${jobNum}`).html("<i>Running</i>");
+    $(`#jobStatus`).html("<i>Running</i>");
     $.ajax({
       type: "POST",
       url: `http://localhost:7867/runjobinworkflow?job=${job}&workflow=${encodeURI(workflow)}&path=${path+'\\.github\\workflows\\'}`,
       dataType: "json",
+      statusCode: {
+        200: function(data) {
+          $(`#response${jobNum}`).html(result);
+          $(`#img${jobNum}`).attr("src", `${imgSuccess}`);
+          $(`#jobStatus`).html("Successful");
+          let end = Date.now();
+          let elapsed = end - start;
+          $(`#timeTakenStatus`).html(`${elapsed/1000}s`);
+        }
+      },
       success: function (result, status, xhr) {
         $(`#response${jobNum}`).html(result);
         $(`#img${jobNum}`).attr("src", `${imgSuccess}`);
+        $(`#jobStatus`).html("Successful");
+        let end = Date.now();
+        let elapsed = end - start;
+        $(`#timeTakenStatus`).html(`${elapsed/1000}s`);
       },
       error: function (xhr, status, error) {
         $(`#img${jobNum}`).attr("src", `${imgRemove}`);
+        $(`#jobStatus`).html("Failed");
+        let end = Date.now();
+        let elapsed = end - start;
+        $(`#timeTakenStatus`).html(`${elapsed/1000}s`);
       }
     });
 }

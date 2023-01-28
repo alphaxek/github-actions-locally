@@ -387,11 +387,11 @@ function getWebviewContent(	imgSummary,
 				  </div>
 				  <div class="info-status">
 					  <p class="txtThree">Status</p>
-					  <p>-</p>
+					  <p id="jobStatus">-</p>
 				  </div>
 				  <div class="info-duration">
 					  <p class="txtThree">Duration</p>
-					  <p>-</p>
+					  <p id="timeTakenStatus">-</p>
 				  </div>
 			  </div>
 			  <div class="job-step">

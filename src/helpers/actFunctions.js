@@ -74,13 +74,11 @@ function runJob(job, path){
 
 function runJobInWorkflow(job, workflow, path){
     try {
-        console.log("We are here");
-        var a = `@${__dirname}\\..\\chocolatey\\bin\\act act -j ${job} -v -W ${path+workflow}`;
-        console.log(a);
-        return execSync(a).toString().split(/[\t\n]+/);
+        return execSync(`@${__dirname}\\..\\chocolatey\\bin\\act act -j ${job} -v -W ${path+workflow}`).toString().split(/[\t\n]+/);
         //act -j release -v -W d:\GitHub\galCopy\.github\workflows\publish.yml
     }
     catch (e) {
+        console.log("WE are  here")
         return e;
     }
 }
