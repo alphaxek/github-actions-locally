@@ -14,7 +14,7 @@ app.post('/runjobinworkflow', function (req, res) {
         res.status(200).json({ response: response });
     }
     catch (e) {
-        res.status(410).json({ response: e });
+        res.status(410).json({ response: e.message });
     }
 })
 

@@ -131,9 +131,14 @@ body{
 }
 
 .step > .detail{
+    display: none;
+    margin-left: 20px;
+    padding-right: -4em;
     width: inherit;
+    text-align: justify;
+    text-justify: inter-word;
+    overflow-wrap: break-word; 
     text-align-last: left;
-    margin-right: 7em;
     font-size: 12px; 
     color: #8C939E;
 }
@@ -142,10 +147,15 @@ body{
     background-color: #1B1F24 ;
 }
 
-.detail{
-    display: none;
-    margin-left: 20px;
-    margin-right: 10px;;
+.job-step{
+    border-radius: 6px;
+    margin: 20px 50px 20px 0px;
+    background-color: #101211;
+    padding: 20px;
+    overflow: scroll;
+    height: 38vh;
+    width: 71.5vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .hr{
@@ -159,6 +169,11 @@ body{
 .symbol{
     width: 20px;
     height: 20px;
+}
+
+.symbol-md{
+    width: 25px;
+    height: 25px;
 }
 
 .symbol-big{
@@ -205,17 +220,6 @@ button:hover{
     width: 70vw;
 }
 
-.job-step{
-    border-radius: 6px;
-    margin: 20px 50px 20px 0px;
-    background-color: #101211;
-    padding: 20px;
-    overflow: scroll;
-    height: 38vh;
-    width: 71.5vw;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 .info > .info-status, .info > p, .info > .info-duration {
     padding-left: 30px;
     padding-right: 30px;
@@ -235,8 +239,6 @@ button:hover{
     margin-right: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-#step3:checked + #step3 > .detail { visibility: visible;}
 
 /* width */
 ::-webkit-scrollbar {

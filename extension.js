@@ -63,6 +63,10 @@ function activate(context) {
 			path.join(context.extensionPath,"img", "loading.gif")
 		  ));
 
+		  const bunnyCute = panel.webview.asWebviewUri(vscode.Uri.file(
+			path.join(context.extensionPath,"img", "bunny-cute.gif")
+		  ));
+
 		  const script = panel.webview.asWebviewUri(vscode.Uri.file(
 			path.join(context.extensionPath,"scripts", "index.js")
 		  ));
@@ -150,9 +154,10 @@ function activate(context) {
 				<div class="step" id="${workflows['response'][workflow]['workflow_file']}job" onclick="showDetails('response${jobNum}')" style="display: none">
 					<img src="${imgWaiting}" id="img${jobNum}" class="status symbol"/>
 					<p class="label">${workflows['response'][workflow]['job_name']}</p>
-					<p class="run" id="runJob" onclick="runJobInWorkflow(\'${workflows['response'][workflow]['job_id']}\', \'${workflows['response'][workflow]['workflow_file']}\', \'${encodeURI(vscode.workspace.workspaceFolders[0].uri['_fsPath'])}\',\'${jobNum}\',\'${imgLoading}\',\'${imgSuccess}\',\'${imgRemove}\');">Run</p>
+					<p class="run" id="runJob" onclick="runJobInWorkflow(\'${workflows['response'][workflow]['job_id']}\', \'${workflows['response'][workflow]['workflow_file']}\', \'${encodeURI(vscode.workspace.workspaceFolders[0].uri['_fsPath'])}\',\'${jobNum}\',\'${imgLoading}\',\'${imgSuccess}\',\'${imgRemove}\',\'${bunnyCute}\');">Run</p>
 					<div class="detail" id="response${jobNum++}">
-					<p><i>Ready to run</i></p>
+					<div class="hr"></div>
+						<p><i>Ready to run</i></p>
 					</div>
 				</div>`;
 			}
