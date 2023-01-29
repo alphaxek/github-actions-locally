@@ -2,9 +2,10 @@
   "name": "github-actions-locally",
   "displayName": "Github Actions Locally [Beta]",
   "publisher": "alphaxek",
+  "icon": "img/GAL-logo.png",
   "repository": "https://github.com/alphaxek/github-actions-locally",
   "description": "Run github actions locally",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.73.0"
   },
