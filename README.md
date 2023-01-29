@@ -1,4 +1,4 @@
-# GAL [Github Actions Locally - GUI VSCode Extension]
+# GAL [Github Actions Locally - GUI VSCode Extension] Beta!
 
 ![GAL-Cropped](https://user-images.githubusercontent.com/116849110/215295110-cfcaaf1b-8c2a-4f68-acce-c15209f8f0e0.png)
 
@@ -6,7 +6,7 @@
 <h3><b>Now run your Github workflows locally without pushing to Github with a beautiful UI🔥</b></h3>
 
 ```
-🚧Still under construction, not yet available on VSCode Extension Marketplace🏪
+🚧Still under construction, Beta version available on VSCode Extension Marketplace🏪
 ```
 
 <b>Wanna have a look?????🤩🤩</b>
