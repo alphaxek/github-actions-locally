@@ -8,7 +8,7 @@
     "url": "https://github.com/alphaxek/github-actions-locally"
   },
   "description": "Run github actions locally",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.73.0"
   },
