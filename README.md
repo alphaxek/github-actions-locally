@@ -31,6 +31,7 @@
 - Making `Run All Jobs` functional. (Yup, it doesn't work yet)⚗️
 - Making `Run Events` functional. (This too, hustling with time you know)🏃‍♂️, okay! let's make this list quick😬
 - Fixing bugs🪲.
+- Improving UI🆕.
 - Addig test cases🧪.
 - Adding automation with github actions for `tests`, `deployments`, & many more🤖.
 - Improving code quality📝.
