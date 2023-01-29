@@ -2,7 +2,7 @@ const execSync = require('child_process').execSync;
 
 function getAllActions(path){ 
     try {
-        const workflows =  execSync(`@${__dirname}\\..\\chocolatey\\bin\\act -l --workflows ${path}`).toString().split(/[\t\n]+/);
+        const workflows =  execSync(`@${__dirname}\\..\\chocolatey\\bin\\act -l --workflows ${path+'\\.github\\workflows\\'}`).toString().split(/[\t\n]+/);
 
         const lengths = [[0, workflows[0].substring(0,workflows[0].indexOf('Job ID')).length],
                          [workflows[0].indexOf('Job ID'), workflows[0].indexOf('Job name')],
@@ -30,7 +30,7 @@ function getAllActions(path){
         return response;
     }
     catch (e) {
-        return e;
+        return e.message;
     }
 }
 
