@@ -23,6 +23,15 @@
 
 <br>
 <br>
+<b>Wanna try? Steps:</b>
+
+- Download `github-actions-locally` from VSCode Extension Marketplace🏪
+- Install Docker Desktop
+- Install Nektos/act
+- `ctrl+p`, select extension & run, yayyyy!🎉🎉
+
+Did you like it? let me know any suggestions/improvements💡
+<br>
 
 <b>There are tons of things to build 👷 like,</b>
 
