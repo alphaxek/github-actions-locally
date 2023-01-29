@@ -1,6 +1,6 @@
 {
   "name": "github-actions-locally",
-  "displayName": "Github Actions Locally",
+  "displayName": "Github Actions Locally [Beta]",
   "publisher": "alphaxek",
   "repository": "https://github.com/alphaxek/github-actions-locally",
   "description": "Run github actions locally",
