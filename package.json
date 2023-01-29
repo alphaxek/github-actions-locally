@@ -1,6 +1,7 @@
 {
   "name": "github-actions-locally",
   "displayName": "github-actions-locally",
+  "publisher": "Alphaxek",
   "description": "Run github actions locally",
   "version": "0.0.1",
   "engines": {
