@@ -1,10 +1,10 @@
 {
   "name": "github-actions-locally",
-  "displayName": "github-actions-locally",
+  "displayName": "Github Actions Locally",
   "publisher": "alphaxek",
   "repository": "https://github.com/alphaxek/github-actions-locally",
   "description": "Run github actions locally",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.73.0"
   },
