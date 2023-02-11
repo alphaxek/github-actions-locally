@@ -1,5 +1,5 @@
-const { heartbeat } = require("./hearbeat.js");
-const { isDocker } = require("./isDocker.js");
+const { heartbeat } = require("./hearbeat");
+const { isDocker } = require("./isDocker");
 
 
 module.exports = {  

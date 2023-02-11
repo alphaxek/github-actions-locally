@@ -5,12 +5,17 @@
     to{ transform: rotate(360deg); }
 }
 
+@font-face {
+    font-family: Lato, sans-serif;
+    src: url('./../fonts/Lato-Regular.ttf');
+  }
+
 body{
     background-color: #1e1e1e;
     background-image: url("./../img/bg.png");
     background-repeat: repeat;
     background-size: cover;
-    font-family: verdana;
+    font-family: 'Lato', sans-serif;
     overflow: hidden;
 }
 
@@ -133,7 +138,6 @@ body{
 .step > .detail{
     display: none;
     margin-left: 20px;
-    padding-right: -4em;
     width: inherit;
     text-align: justify;
     text-justify: inter-word;
@@ -141,6 +145,10 @@ body{
     text-align-last: left;
     font-size: 12px; 
     color: #8C939E;
+}
+
+.step > .detail > p{
+    margin-right: 90px;
 }
 
 .step:hover {
@@ -239,6 +247,26 @@ button:hover{
     margin-right: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.error-bar{
+    position: absolute;
+    display: none;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height:22px;
+    background-color: crimson;
+    text-align: center;
+    padding-top: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 1s ease-in-out;
+}
+
+.disable-job-run{
+    pointer-events: none;
+    cursor:no-drop;
+}
+
 
 /* width */
 ::-webkit-scrollbar {

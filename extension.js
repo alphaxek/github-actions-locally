@@ -59,6 +59,10 @@ function activate(context) {
 			path.join(context.extensionPath,"img", "refresh.png")
 		  ));
 
+		  const cancel = panel.webview.asWebviewUri(vscode.Uri.file(
+			path.join(context.extensionPath,"img", "cancel.png")
+		  ));
+
 		  const imgLoading = panel.webview.asWebviewUri(vscode.Uri.file(
 			path.join(context.extensionPath,"img", "loading.gif")
 		  ));
@@ -74,6 +78,7 @@ function activate(context) {
 		  const style = panel.webview.asWebviewUri(vscode.Uri.file(
 			path.join(context.extensionPath,"css", "style.css")
 		  ));
+		  
 
 		panel.webview.options = {
 			enableScripts: true,
@@ -157,8 +162,8 @@ function activate(context) {
 					<p class="label">${workflows['response'][workflow]['job_name']}</p>
 					<p class="run" id="runJob" onclick="runJobInWorkflow(\'${workflows['response'][workflow]['job_id']}\', \'${workflows['response'][workflow]['workflow_file']}\', \'${encodeURI(vscode.workspace.workspaceFolders[0].uri['_fsPath'])}\',\'${jobNum}\',\'${imgLoading}\',\'${imgSuccess}\',\'${imgRemove}\',\'${bunnyCute}\');">Run</p>
 					<div class="detail" id="response${jobNum++}">
-					<div class="hr"></div>
-						<p><i>Ready to run</i></p>
+						<div class="hr"></div>
+						<p><i>Waiting to run</i></p>
 					</div>
 				</div>`;
 			}
@@ -182,7 +187,8 @@ function activate(context) {
 												BodyTagonLoadJob,
 												docker, 
 												github, 
-												refresh);
+												refresh,
+												cancel);
 	});
 
 	context.subscriptions.push(disposable);
@@ -202,7 +208,8 @@ function getWebviewContent(	imgSummary,
 							BodyTagonLoadJob, 
 							docker, 
 							github, 
-							refresh) {
+							refresh,
+							cancel) {
 	return `<html lang="en">
 	<head>
 	  <meta charset="UTF-8">
@@ -212,6 +219,8 @@ function getWebviewContent(	imgSummary,
 	  <link rel="stylesheet" href="${style}">
 	</head>
 	${BodyTagonLoadJob}
+	  <div class="error-bar error-bar-docker"><b>Docker Desktop is not running, please start Docker Desktop & refresh GAL app</b></div>
+	  <div class="error-bar error-bar-gal-api"><b>GAL API is not running, please restart GAL app</b></div>
 	  <div class="container">
 		  <div class="menu">
 			<h1 class="txtOne">GAL</h1>
@@ -383,13 +392,14 @@ function getWebviewContent(	imgSummary,
 			  <div class="info">
 			   	  <div class="info-status-apps" style="display: flex; align-items: center;">
 					 <img src="${docker}" class="symbol-big"/>
-					 <h4 id="dockerStatus">Not Running</h4>
+					 <h4 id="dockerStatus">Docker <i>Not Running</i></h4>
 					 <img src="${refresh}" id="dockerRefresh" class="symbol-small" onclick="checkDocker();"/>
 				  </div>
 				  <div class="info-status-apps" style="display: flex; align-items: center;">
 					 <img src="${github}" class="symbol-big"/>
-					 <h4 id="githubStatus">Not Running</h4>
+					 <h4 id="githubStatus">GAL API <i>Not Running</i></h4>
 					 <img src="${refresh}" id="gitRefresh" class="symbol-small" onclick="checkApi();"/>
+					 <img src="${cancel}" id="gitRefresh" class="symbol-small" onclick="stopApi();"/>
 				  </div>
 				  <div class="info-status">
 					  <p class="txtThree">Status</p>

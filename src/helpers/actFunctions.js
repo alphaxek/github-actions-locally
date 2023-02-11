@@ -78,8 +78,7 @@ function runJobInWorkflow(job, workflow, path){
         //act -j release -v -W d:\GitHub\galCopy\.github\workflows\publish.yml
     }
     catch (e) {
-        console.log("WE are  here")
-        return e;
+        throw e;
     }
 }
 

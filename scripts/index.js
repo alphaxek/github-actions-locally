@@ -33,30 +33,36 @@ function showJobs(id, thisItem) {
 
 function checkApi(){
   $("#gitRefresh").addClass("rotate");
-
+  $("body").css("cursor","wait");
+  $(".run").addClass("disable-job-run");
+  
   $.ajax({
     type: "GET",
     url: "http://localhost:7867/heartbeat",
     dataType: "json",
     statusCode: {
       200: function(data) {
-        $("#githubStatus").html("Running");
+        $("#githubStatus").html("GAL API <i>Running</i>");
         $("#gitRefresh").removeClass("rotate");
+        $(".error-bar-gal-api").css("display", "none");
+        $("body").css("cursor","default");
+        $("#runJob").removeClass("disable-job-run");
       }
     },
-    success: function (result, status, xhr) {
-      $("#githubStatus").html("Running");
-      $("#gitRefresh").removeClass("rotate");
-    },
     error: function (xhr, status, error) {
-      $("#githubStatus").html("Not Running");
+      $("#githubStatus").html("GAL API <i>Not Running</i>");
       $("#gitRefresh").removeClass("rotate");
+      $(".error-bar-gal-api").css("display", "block");
+      $("#runJob").addClass("disable-job-run");
+      $("body").css("cursor","default");
     }
   });
 }
 
 function checkDocker(){
   $("#dockerRefresh").addClass("rotate");
+  $("body").css("cursor","wait");
+  $(".run").addClass("disable-job-run");
 
   $.ajax({
     type: "GET",
@@ -64,56 +70,77 @@ function checkDocker(){
     dataType: "json",
     statusCode: {
       200: function(data) {
-        $("#dockerStatus").html("Running");
+        $("#dockerStatus").html("Docker <i>Running</i>");
         $("#dockerRefresh").removeClass("rotate");
+        $(".error-bar-docker").css("display", "none");
+        $(".run").removeClass("disable-job-run");
+        $("body").css("cursor","default");
       }
     },
-    success: function (result, status, xhr) {
-      $("#dockerStatus").html("Running");
+    error: function (xhr, status, error) {
+      $("#dockerStatus").html("Docker <i>Not Running</i>");
       $("#dockerRefresh").removeClass("rotate");
+      $(".error-bar-docker").css("display", "block");
+      $(".run").addClass("disable-job-run");
+      $("body").css("cursor","default");
+    }
+  });
+}
+
+function stopApi(){
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:7867/stopApi",
+    dataType: "json",
+    statusCode: {
+      200: function(data) {
+        setTimeout(function () {
+          checkApi();
+        }, 2000);
+      }
     },
     error: function (xhr, status, error) {
-      $("#dockerStatus").html("Not Running");
-      $("#dockerRefresh").removeClass("rotate");
+      setTimeout(function () {
+        checkApi();
+      }, 2000);
     }
   });
 }
 
 function runJobInWorkflow(job, workflow, path, jobNum, imgLoading, imgSuccess, imgRemove, bunnyCute){
-    let start = Date.now();
-    $(`#img${jobNum}`).attr("src", `${imgLoading}`);
-    $(`#response${jobNum}`).html(`<div class="hr"></div><p><i>Running</i></p>`);
-    $(`#jobStatus`).html(`<i>Running</i>`);
-    $(`#timeTakenStatus`).html(`<img src="${bunnyCute}" class="symbol-md"/>`);
-    $.ajax({
-      type: "POST",
-      url: `http://localhost:7867/runjobinworkflow?job=${job}&workflow=${encodeURI(workflow)}&path=${path+'\\.github\\workflows\\'}`,
-      dataType: "json",
-      statusCode: {
-      200: function(result) {
-          let end = Date.now();
-          let elapsed = (end - start)/1000;
-          $(`#response${jobNum}`).html(`<div class="hr"></div><p><b>This job took ${elapsed}s</b> <br><br>${JSON.stringify(result.response)}</p>`);
-          $(`#img${jobNum}`).attr("src", `${imgSuccess}`);
-          $(`#jobStatus`).html("Successful");
-          $(`#timeTakenStatus`).html(`${elapsed}s`);
-        }
-      },
-      success: function (result, status, xhr) {
+  let start = Date.now();
+  let ApiResponse = ``;
+
+  $(`#img${jobNum}`).attr("src", `${imgLoading}`);
+  $(`#response${jobNum}`).html(`<div class="hr"></div><p><i>Running</i></p>`);
+  $(`#jobStatus`).html(`<i>Running</i>`);
+  $(`#timeTakenStatus`).html(`<img src="${bunnyCute}" class="symbol-md"/>`);
+  $.ajax({
+    type: "POST",
+    url: `http://localhost:7867/runjobinworkflow?job=${job}&workflow=${encodeURI(workflow)}&path=${path+'\\.github\\workflows\\'}`,
+    dataType: "json",
+    statusCode: {
+    200: function(result) {
         let end = Date.now();
         let elapsed = (end - start)/1000;
-        $(`#response${jobNum}`).html(`<div class="hr"></div><p><b>This job took ${elapsed}s</b> <br><br>${JSON.stringify(result.response)}</p>`);
+
+        for (var i=0; i < result.response.length; i++) {
+          ApiResponse += `<p><b>${i}</b>. ${JSON.stringify(result.response[i])}</p>`;
+        }
+
+        $(`#response${jobNum}`).html(`<div class="hr"></div><p><b>This job took ${elapsed}s</b> <br><br>${ApiResponse}</p>`);
         $(`#img${jobNum}`).attr("src", `${imgSuccess}`);
         $(`#jobStatus`).html("Successful");
         $(`#timeTakenStatus`).html(`${elapsed}s`);
-      },
-      error: function (error, xhr, status) {
-        let end = Date.now();
-        let elapsed = (end - start)/1000;
-        $(`#response${jobNum}`).html(`<div class="hr"></div><p><b>This job took ${elapsed}s</b> <br><br>${JSON.stringify(error.response)}</p>`);
-        $(`#img${jobNum}`).attr("src", `${imgRemove}`);
-        $(`#jobStatus`).html("Failed");
-        $(`#timeTakenStatus`).html(`${elapsed}s`);
       }
-    });
+    },
+    error: function (error, xhr, status) {
+      let end = Date.now();
+      let elapsed = (end - start)/1000;
+      $(`#response${jobNum}`).html(`<div class="hr"></div><p><b>This job took ${elapsed}s</b> <br><br>${JSON.stringify(error.response)}</p>`);
+      $(`#img${jobNum}`).attr("src", `${imgRemove}`);
+      $(`#jobStatus`).html("Failed");
+      $(`#timeTakenStatus`).html(`${elapsed}s`);
+    }
+  });
 }

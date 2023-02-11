@@ -3,6 +3,7 @@ const cors = require('cors');
 const { runJobInWorkflow } = require("./../helpers/index");
 const { heartbeat, isDocker } = require("./helpers/index");
 const app = express()
+var server;
 
 app.use(cors({
     origin: '*'
@@ -32,11 +33,26 @@ app.get('/isdocker', function (req, res) {
     }
 })
 
+app.get('/stopApi', function (req, res) {
+    try{
+        server.close(function() { console.log('API closed'); });
+        res.sendStatus(200);
+    }
+    catch (e) {
+        res.status(410).json({ response: e.message });
+    }
+})
 
 function startAPI() {
-    app.listen(7867, () => {
-        console.log("API is ready");
-    })
+    try{
+        server = app.listen(7867, () => {
+            console.log("API is ready");
+        });
+    }
+    catch (e) {
+        console.log(e.message);
+    }
 }
+
 
 module.exports = { startAPI };
