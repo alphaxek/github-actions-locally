@@ -219,8 +219,8 @@ function getWebviewContent(	imgSummary,
 	  <link rel="stylesheet" href="${style}">
 	</head>
 	${BodyTagonLoadJob}
-	  <div class="error-bar error-bar-docker"><b>Docker Desktop is not running, please start Docker Desktop & refresh GAL app</b></div>
-	  <div class="error-bar error-bar-gal-api"><b>GAL API is not running, please restart GAL app</b></div>
+	  <div class="error-bar error-bar-docker"><b>Docker Desktop is not running, please start Docker Desktop & refresh docker option 😵</b></div>
+	  <div class="error-bar error-bar-gal-api"><b>GAL API is not running, please restart GAL app 😵</b></div>
 	  <div class="container">
 		  <div class="menu">
 			<h1 class="txtOne">GAL</h1>
