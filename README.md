@@ -1,4 +1,4 @@
-# GAL [Github Actions Locally - GUI VSCode Extension] Beta!
+# GAL [Github Actions Locally - GUI VSCode Extension] Beta! 🏷️
 
 ![GAL-Cropped](https://user-images.githubusercontent.com/116849110/215295110-cfcaaf1b-8c2a-4f68-acce-c15209f8f0e0.png)
 
@@ -14,11 +14,11 @@
 <i>Please hold on, I bet you will like it, preview might take some time to load, Github CDN you know😉</i>
 
 <picture>
-  <img alt="Preview one" src="https://user-images.githubusercontent.com/116849110/215318581-e0f14f29-fa2a-4052-bfd1-6322949c7765.gif">
+  <img alt="Preview one" src="https://user-images.githubusercontent.com/116849110/218339974-b479c294-9825-424d-a5a5-c748731555ec.gif">
 </picture>
 <br>
 <picture>
-  <img alt="Preview one" src="https://user-images.githubusercontent.com/116849110/215318586-0b4ea69a-10b2-4e8c-ba3a-5cc02967ecff.gif">
+  <img alt="Preview one" src="https://user-images.githubusercontent.com/116849110/218340000-faa0b0c5-48a1-453e-821a-71cf57e1629f.gif">
 </picture>
 
 <br>
